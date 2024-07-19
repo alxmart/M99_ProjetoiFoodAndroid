@@ -18,5 +18,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        inicializar()
+
+    }
+
+    private fun inicializar() {
+
+
+
     }
 }
