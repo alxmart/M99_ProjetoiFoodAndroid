@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "M99_ProjetoiFoodAndroid"
-include(":app")
+include(":cliente")
