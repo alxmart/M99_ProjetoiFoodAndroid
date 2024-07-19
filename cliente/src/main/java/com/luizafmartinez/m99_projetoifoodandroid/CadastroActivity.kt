@@ -18,5 +18,13 @@ class CadastroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        inicializar()
+
+    }
+
+    private fun inicializar() {
+
+
+
     }
 }
