@@ -1,5 +1,6 @@
 package com.luizafmartinez.m99_projetoifoodandroid
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBindin
 class LoginActivity : AppCompatActivity() {
 
     private val binding by lazy {
-        ActivityLoginBinding.inflate( layoutInflater)
+        ActivityLoginBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +24,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun inicializar() {
-
-
-
+        inicializarEventoClique()
     }
+
+    private fun inicializarEventoClique() {
+        binding.textCadastro.setOnClickListener {
+            startActivity(
+                Intent(this, CadastroActivity::class.java)
+            )
+        }
+    }
+
+
 }
