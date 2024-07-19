@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418014879074",
+    "project_id": "projetoifood-8ac07",
+    "storage_bucket": "projetoifood-8ac07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418014879074:android:41d71c65312e9155bda03b",
+        "android_client_info": {
+          "package_name": "com.luizafmartinez.m99_projetoifoodandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBllKQX85W0-fBhglJxm6HsoHOBDJvveBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
