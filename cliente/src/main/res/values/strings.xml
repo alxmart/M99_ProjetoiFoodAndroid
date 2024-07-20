@@ -6,4 +6,6 @@
     <string name="hintSenha">Digite sua senha.</string>
     <string name="textNaoTemConta">Não tem conta.</string>
     <string name="textFaltaPouco">Falta pouco para matar \\n sua fome.</string>
+    <string name="hintNome">Digite seu nome</string>
+    <string name="hintTelefone">Digite seu telefone</string>
 </resources>

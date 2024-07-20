@@ -2,11 +2,6 @@
 <resources>
     <color name="preto">#FF000000</color>
     <color name="branco">#FFFFFFFF</color>
-
    <!--  Cores customizadas -->
     <color name="primaria">#EA1D2D</color>
-
-
-
-
 </resources>
