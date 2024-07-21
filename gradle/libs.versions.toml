@@ -11,6 +11,7 @@ material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 gs = "4.4.2"
+masked = "5.0.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -20,6 +21,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx"}
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx"}
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx"}
+masked-edittext = { group = "io.github.vicmikhailau", name = "MaskedEditText", version.ref = "masked" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
