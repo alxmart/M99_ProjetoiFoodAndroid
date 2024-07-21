@@ -49,8 +49,11 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.storage.ktx)
 
-    // Dependência de máscara
+    // Dependência de Máscara
     implementation(libs.masked.edittext)
+
+    // Dependência de Validação
+    implementation(libs.easyvalidation.core)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
