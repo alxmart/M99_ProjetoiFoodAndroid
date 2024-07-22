@@ -21,7 +21,6 @@ class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         inicializar()
     }
 
@@ -39,7 +38,8 @@ class CadastroActivity : AppCompatActivity() {
                 val senha = editCadastroSenha.text.toString()
                 val telefone = editCadastroTelefone.text.toString()
 
-                /*val valor = "20"
+                /* Validação de Campos - Exemplos:
+                val valor = "20"
                 val resultadoValidacao = valor.validator()
                     .validNumber()
                     .greaterThan(10)
@@ -64,7 +64,8 @@ class CadastroActivity : AppCompatActivity() {
                     .creditCardNumberWithSpaces()
                     .creditCardNumberWithDashes()
                     .validUrl()
-                    .check() //Confirmar que está fazendo a validação*/
+                    .check() //Confirmar que está fazendo a validação
+                    */
 
                 val valNome = nome.validator()
                     //.nonEmpty()
@@ -89,7 +90,6 @@ class CadastroActivity : AppCompatActivity() {
                         "\nE-mail:($valEmail) " +
                         "\nSenha:($valSenha) " +
                         "\nTelefone:($valTelefone)")
-
             }
         }
     }
@@ -97,13 +97,12 @@ class CadastroActivity : AppCompatActivity() {
     private fun inicializarToolbar() {
 
         val toolbar = binding.includeTbPrincipal.tbPrincipal
-        setSupportActionBar( toolbar )
+        setSupportActionBar( toolbar ) //Define toolbar como support action bar
 
         supportActionBar?.apply {
             title = "Cadastro de usuário"
-            setDisplayHomeAsUpEnabled(true)
+            setDisplayHomeAsUpEnabled(true) //Mostra botão de voltar na toolbar
         }
     }
-
 
 }
