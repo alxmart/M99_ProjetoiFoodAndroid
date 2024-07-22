@@ -8,4 +8,9 @@
     <string name="textFaltaPouco">Falta pouco para matar \\n sua fome.</string>
     <string name="hintNome">Digite seu nome</string>
     <string name="hintTelefone">Digite seu telefone</string>
+    <string name="erro_cadastro_nome">Digite um nome válido, com no mínimo 6 letras</string>
+    <string name="erro_cadastro_email">Digite um e-mail válido.</string>
+    <string name="erro_cadastro_senha">Digite uma senha com no mínimo 6 caracteres</string>
+    <string name="erro_cadastro_telefone">Digite um telefone válido.</string>
+
 </resources>

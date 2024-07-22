@@ -3,11 +3,15 @@ package com.luizafmartinez.m99_projetoifoodandroid
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityCadastroBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
+import com.luizafmartinez.m99_projetoifoodandroid.domain.model.Usuario
+import com.luizafmartinez.m99_projetoifoodandroid.domain.usecase.AutenticacaoUseCase
+import com.luizafmartinez.m99_projetoifoodandroid.presentation.viewmodel.AutenticacaoViewModel
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
@@ -20,6 +24,8 @@ class CadastroActivity : AppCompatActivity() {
         ActivityCadastroBinding.inflate( layoutInflater)
     }
 
+    private val autenticacaoViewModel : AutenticacaoViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -29,12 +35,37 @@ class CadastroActivity : AppCompatActivity() {
     private fun inicializar() {
         inicializarToolbar()
         inicializarEventosClique()
+        inicializarObservaveis()
+    }
+
+    private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.resultadoValidacao
+            .observe(this) { resultadoValidacao ->
+
+                with (binding) {
+
+                    editCadastroNome.error =
+                        if ( resultadoValidacao.nome) null else getString(R.string.erro_cadastro_nome)
+
+                    editCadastroEmail.error =
+                        if ( resultadoValidacao.email) null else getString(R.string.erro_cadastro_email)
+
+                    editCadastroSenha.error =
+                        if ( resultadoValidacao.senha) null else getString(R.string.erro_cadastro_senha)
+
+                    editCadastroTelefone.error =
+                        if ( resultadoValidacao.telefone) null else getString(R.string.erro_cadastro_telefone)
+        }
+
+        }
     }
 
     private fun inicializarEventosClique() {
 
         with( binding ) {
             btnCadastrar.setOnClickListener {
+
                 val nome = editCadastroNome.text.toString()
                 val email = editCadastroEmail.text.toString()
                 val senha = editCadastroSenha.text.toString()
@@ -69,29 +100,17 @@ class CadastroActivity : AppCompatActivity() {
                     .check() //Confirmar que está fazendo a validação
                     */
 
-                val valNome = nome.validator()
-                    //.nonEmpty()
-                    .minLength(6)
-                    //.maxLength(20)
-                    .check()
-
-                //val valEmail = email.validEmail()
-                val valEmail = email.validator()
-                    .validEmail()
-                    .check()
-
-                val valSenha = senha.validator()
-                    .minLength(6)
-                    .check()
-
-                val valTelefone = telefone.validator()
-                    .minLength(14)
-                    .check()
-
-                Log.i("Validacao", "\nNome:($valNome) " +
+                /*Log.i("Validacao", "\nNome:($valNome) " +
                         "\nE-mail:($valEmail) " +
                         "\nSenha:($valSenha) " +
-                        "\nTelefone:($valTelefone)")
+                        "\nTelefone:($valTelefone)"
+                )*/
+
+                val usuario = Usuario(
+                    email, senha, nome, telefone
+                )
+                autenticacaoViewModel.cadastrarUsuario(usuario)
+
             }
         }
     }
