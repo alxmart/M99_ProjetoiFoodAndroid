@@ -20,11 +20,14 @@ class AutenticacaoViewModel @Inject constructor(
 
     fun cadastrarUsuario( usuario: Usuario) {
         // Verificar os dados do usuário
-        val retornoValidacao = autenticacaoUseCase.validarDadosUsuario( usuario)
+        val retornoValidacao = autenticacaoUseCase.validarCadastroUsuario( usuario)
         _resultadoValidacao.value = retornoValidacao
-
-
         // Cadastrar o usuário
+    }
+
+    fun logarUsuario( usuario: Usuario) {
+        val retornoValidacao = autenticacaoUseCase.validarLoginUsuario( usuario)
+        _resultadoValidacao.value = retornoValidacao
     }
 
 

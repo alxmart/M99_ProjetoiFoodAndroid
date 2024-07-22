@@ -5,7 +5,7 @@ import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 
 class AutenticacaoUseCase {
 
-    fun validarDadosUsuario(usuario: Usuario) : ResultadoValidacao {
+    fun validarCadastroUsuario(usuario: Usuario) : ResultadoValidacao {
 
         val resultadoValidacao = ResultadoValidacao()
 
@@ -41,7 +41,27 @@ class AutenticacaoUseCase {
             resultadoValidacao.telefone = true
 
         return resultadoValidacao
+    }
 
+    fun validarLoginUsuario(usuario: Usuario) : ResultadoValidacao {
+
+        val resultadoValidacao = ResultadoValidacao()
+
+        val valEmail = usuario.email.validator()
+            .validEmail()
+            .check()
+
+        val valSenha = usuario.senha.validator()
+            .minLength(6)
+            .check()
+
+        if ( valEmail )
+            resultadoValidacao.email = true
+
+        if ( valSenha )
+            resultadoValidacao.senha = true
+
+        return resultadoValidacao
     }
 
 }
