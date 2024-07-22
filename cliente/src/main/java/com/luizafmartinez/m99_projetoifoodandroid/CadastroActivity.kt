@@ -11,7 +11,9 @@ import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBindin
 import com.wajahatkarim3.easyvalidation.core.view_ktx.nonEmpty
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CadastroActivity : AppCompatActivity() {
 
     private val binding by lazy {
