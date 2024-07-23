@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.luizafmartinez.core.AlertaCarregamento
 import com.luizafmartinez.core.exibirMensagem
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityCadastroBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
@@ -25,6 +26,10 @@ class CadastroActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityCadastroBinding.inflate( layoutInflater)
+    }
+
+    private val alertaCarregamento by lazy {
+        AlertaCarregamento(this)
     }
 
     private val autenticacaoViewModel : AutenticacaoViewModel by viewModels()
@@ -48,6 +53,15 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.carregando.observe(this) { carregando ->
+            if ( carregando ) {
+                alertaCarregamento.exibir("Fazendo seu cadastro.")
+            } else {
+                alertaCarregamento.fechar()
+            }
+        }
+
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {

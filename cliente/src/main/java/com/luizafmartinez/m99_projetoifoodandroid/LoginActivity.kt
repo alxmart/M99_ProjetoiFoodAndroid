@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.luizafmartinez.core.AlertaCarregamento
 import com.luizafmartinez.core.exibirMensagem
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityLoginBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
@@ -22,6 +23,10 @@ class LoginActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityLoginBinding.inflate(layoutInflater)
+    }
+
+    private val alertaCarregamento by lazy {
+        AlertaCarregamento(this)
     }
 
     private val autenticacaoViewModel: AutenticacaoViewModel by viewModels()
@@ -50,6 +55,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.carregando.observe(this) { carregando ->
+            if ( carregando ) {
+                alertaCarregamento.exibir("Efetuando login")
+            } else {
+                alertaCarregamento.fechar()
+            }
+        }
 
         autenticacaoViewModel.usuarioEstaLogado.observe(this) { usuarioEstaLogado ->
             if ( usuarioEstaLogado ) {
