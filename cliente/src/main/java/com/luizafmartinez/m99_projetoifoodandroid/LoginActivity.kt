@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.luizafmartinez.core.exibirMensagem
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityLoginBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
 import com.luizafmartinez.m99_projetoifoodandroid.domain.model.Usuario
@@ -52,9 +53,7 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()*/
                 navegarPrincipal()
             } else {
-                Toast.makeText(
-                    this,"Erro ao fazer login",
-                    Toast.LENGTH_SHORT).show()
+                exibirMensagem("Erro ao fazer login")
             }
         }
 

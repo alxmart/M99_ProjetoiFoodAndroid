@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.luizafmartinez.core.exibirMensagem
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityCadastroBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
 import com.luizafmartinez.m99_projetoifoodandroid.domain.model.Usuario
@@ -55,9 +56,7 @@ class CadastroActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT).show()*/
                 navegarPrincipal()
             } else {
-                Toast.makeText(
-                    this,"Erro ao realizar cadastro",
-                    Toast.LENGTH_SHORT).show()
+                exibirMensagem("Erro ao realizar cadastro")
             }
         }
 
