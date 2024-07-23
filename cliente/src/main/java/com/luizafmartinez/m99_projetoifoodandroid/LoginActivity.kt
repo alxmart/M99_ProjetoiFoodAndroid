@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.luizafmartinez.core.exibirMensagem
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityLoginBinding
 import com.luizafmartinez.m99_projetoifoodandroid.databinding.ActivityMainBinding
@@ -28,9 +29,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         inicializar()
+        //FirebaseAuth.getInstance().signOut()
+    }
 
+    override fun onStart() {
+        super.onStart()
+        autenticacaoViewModel.verificarUsuarioLogado()
     }
 
     private fun inicializar() {
@@ -45,6 +50,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.usuarioEstaLogado.observe(this) { usuarioEstaLogado ->
+            if ( usuarioEstaLogado ) {
+                navegarPrincipal()
+            }
+        }
 
         autenticacaoViewModel.sucesso.observe(this) { sucesso ->
             if (sucesso) {
