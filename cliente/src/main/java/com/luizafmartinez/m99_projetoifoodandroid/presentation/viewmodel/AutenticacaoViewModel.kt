@@ -42,6 +42,13 @@ class AutenticacaoViewModel @Inject constructor(
     fun logarUsuario( usuario: Usuario) {
         val retornoValidacao = autenticacaoUseCase.validarLoginUsuario( usuario)
         _resultadoValidacao.value = retornoValidacao
+        // Login usuário
+        if ( retornoValidacao.sucessoValidacaoLogin ) {
+            viewModelScope.launch {
+                val retorno = autenticacaoRepositoryImpl.logarUsuario( usuario )
+                _sucesso.postValue( retorno )
+            }
+        }
     }
 
 }

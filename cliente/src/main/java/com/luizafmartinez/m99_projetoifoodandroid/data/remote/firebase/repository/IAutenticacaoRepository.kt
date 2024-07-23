@@ -3,10 +3,6 @@ package com.luizafmartinez.m99_projetoifoodandroid.data.remote.firebase.reposito
 import com.luizafmartinez.m99_projetoifoodandroid.domain.model.Usuario
 
 interface IAutenticacaoRepository {
-
     suspend fun cadastrarUsuario( usuario: Usuario ) : Boolean
-
-
-
-
+    suspend fun logarUsuario( usuario: Usuario ) : Boolean
 }
