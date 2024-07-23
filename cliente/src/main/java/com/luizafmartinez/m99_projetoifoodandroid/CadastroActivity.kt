@@ -1,7 +1,9 @@
 package com.luizafmartinez.m99_projetoifoodandroid
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,11 +40,29 @@ class CadastroActivity : AppCompatActivity() {
         inicializarObservaveis()
     }
 
+    fun navegarPrincipal() {
+        startActivity(
+            Intent(this, MainActivity::class.java)
+        )
+    }
+
     private fun inicializarObservaveis() {
+
+        autenticacaoViewModel.sucesso.observe(this) { sucesso ->
+            if (sucesso) {
+                /*Toast.makeText(
+                    this,"Cadastro realizado com sucesso",
+                    Toast.LENGTH_SHORT).show()*/
+                navegarPrincipal()
+            } else {
+                Toast.makeText(
+                    this,"Erro ao realizar cadastro",
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
 
         autenticacaoViewModel.resultadoValidacao
             .observe(this) { resultadoValidacao ->
-
                 with (binding) {
 
                     editCadastroNome.error =
@@ -56,9 +76,8 @@ class CadastroActivity : AppCompatActivity() {
 
                     editCadastroTelefone.error =
                         if ( resultadoValidacao.telefone) null else getString(R.string.erro_cadastro_telefone)
-        }
-
-        }
+                }
+            }
     }
 
     private fun inicializarEventosClique() {
